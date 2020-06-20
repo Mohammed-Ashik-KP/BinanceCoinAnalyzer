@@ -1,0 +1,72 @@
+/*-----------------NAVBAR-------------------------*/
+
+/*-----------------NAVBAR-------------------------*/
+.navigation{
+    background-image: linear-gradient(to right,#9f24af,rgba(36, 103, 230, 0.856));
+    min-height: 60px;
+}
+.nav-links{
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-content: center;
+}
+.nav-links .brand{
+    color: white;
+    font-weight: bolder;
+    font-size: 22px;
+    line-height: 56px;
+ 
+}
+
+/*-----------------TopVolumeChangesBox-------------------------*/
+
+/*-----------------TopVolumeChangesBox-------------------------*/
+
+
+.box-block{
+    display: block;
+    padding: 8px;
+    border: 1px solid slateblue;
+    width: auto;
+    margin: 5px;
+    
+}
+.block{
+  display: contents;
+  text-align: center;
+}
+.block .title{
+    display: block;
+    margin-bottom: 3px;
+    font-weight: bold;
+    color: tomato;
+  
+}
+.block .change{
+    display: block;
+
+}
+.section-title{
+    text-align: center;
+    color: rgb(14, 5, 71);
+    border: transparent;
+    border-radius: 20px;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-bottom: 2px;
+    
+}
+.section-title::after{
+    content: '';
+    height: 3px;
+    width: 30%;
+    background-color: rgb(61, 13, 13);
+    position: absolute;
+    top: 100%;
+    left: 35%;
+    border: transparent;
+    border-radius: 40px;
+
+}

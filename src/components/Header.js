@@ -11,7 +11,7 @@ function Header(props) {
         </div>
         <div className="row">
             <div className="col">
-                <div className="text-success mt-3 font-weight-bold text-center">
+                <div className="text-success mt-3 mb-3 font-weight-bold text-center">
                     Smart Suggestion For Smart Trades !
                 </div>
             </div>

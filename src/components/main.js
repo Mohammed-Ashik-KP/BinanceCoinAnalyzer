@@ -1,21 +1,25 @@
-import React from 'react';
+import React  from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/style.css'
 import Header from './Header';
-import TopVolume from './TopVolume';
-import TopSuggestion from './TopSuggestion';
 import Footer from './footer';
-import TopPriceAction from './TopPriceAction';
+import Menu from './menu';
+import ContextProvider from '../context/context';
+import Contents from './content';
+
 
 function Main(props) {
+ 
     return (
-        <div>
-           <Header/>
-           <TopSuggestion/>
-           <TopPriceAction/>
-           <TopVolume/>
+        <ContextProvider>
+        
+          <Header/>
+           <Menu/>
+           <Contents/>
            <Footer/>
-        </div>
+        
+        </ContextProvider>
+ 
     );
 }
 

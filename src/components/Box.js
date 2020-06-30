@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/style.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-function SuggestionBox(props) {
+function Box(props) {
     return (
         
         
@@ -26,4 +26,4 @@ function SuggestionBox(props) {
     );
 }
 
-export default SuggestionBox;
+export default Box;

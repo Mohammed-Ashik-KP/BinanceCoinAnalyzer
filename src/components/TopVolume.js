@@ -34,6 +34,7 @@ const [volumeChangePercentage,setVolumeChangePercenatge] = useState();
             })
         }
         else{
+            try {
         var avgWaitPrice=0;
         var totalVolumeBefore=0;
         var currentQuoteVolume=0;
@@ -69,8 +70,12 @@ const [volumeChangePercentage,setVolumeChangePercenatge] = useState();
                       setCurrentVolume(parseInt(currentQuoteVolume).toFixed(2));
                       setVolumeChangePercenatge(((currentQuoteVolume-(totalVolumeBefore*avgWaitPrice))/(totalVolumeBefore*avgWaitPrice)*100).toFixed(2))
                     })
-                });}
-            
+                });
+            }
+             catch (error) {
+                console.log("No Coin Found !")
+            }
+        }
         },[coin,timeframe])
 
     return (
@@ -85,7 +90,7 @@ const [volumeChangePercentage,setVolumeChangePercenatge] = useState();
                 </div>
                 <div className="row text-center mt-2 mb-2">
                     <div className="col-md-6 col-sm-12">
-                        Enter Coin : <input  onChange={e=>{setCoin((e.target.value).toUpperCase() + 'BTC')}} type="text" ></input>
+                        Enter Coin : <input  onChange={e=>{setCoin((e.target.value).toUpperCase() + 'BTC')}} type="text" maxLength="5" ></input>
                     </div>
                     <div className="col-md-6 cl-sm-12">
                         TimeFrame : <select onChange={e=>{setTimeFrame(e.target.value)}}name="timeframe">

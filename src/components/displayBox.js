@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 function DisplayBox(props) {
     
     useEffect(()=>{
-        console.log(typeof(props.volumechange))
+   
         if(props.pricechange<0){
             setPChangeClass("col mt-1  text-danger font-weight-bold")
         }
@@ -29,20 +29,20 @@ function DisplayBox(props) {
     return (
         <div className="row box-border p-3 align-items-center">
             <div className="col">
-                  <div className="row"><div className=" col text-warning font-weight-bolder m-2 coin">  {props.coin} </div></div>
-                  <div className="row"><div className="col mb-2 font-weight-bold "> Current Price : <span> {props.cprice} </span>BTC</div></div>
-                  <div className="row"><div className="col mt-1 font-weight-bold"> Price change  : <span class={pchangeClass}> {props.pricechange}%</span></div></div>
+                  <div className="row coin-name"><div className=" col text-info font-weight-bolder m-2 coin">  {props.coin} </div></div>
+                  <div className="row"><div className="col mb-2 font-weight-bold "> Price:<span> {props.cprice} </span>BTC</div></div>
+                  <div className="row borderBottom"><div className="col mt-1 font-weight-bold"> Price change:<span className={pchangeClass}> {props.pricechange}%</span></div></div>
             </div>
-            <div className="col m-2 text-center">
-                  <div className="block-title font-weight-bold">Volume Change</div>
+            <div className="col-md-3 col-sm-12 m-2 text-center borderBottom">
+                  <div className="block-title font-weight-bold mb-1">Volume Change</div>
                         <div className={vchangeClass}>{props.volumechange} BTC</div>
             </div>
-            <div className="col m-2 text-center">
-                  <div className="block-title font-weight-bold">Volume Change Percentage</div>
+            <div className="col-md-3 col-sm-12 m-2 text-center borderBottom">
+                  <div className="block-title font-weight-bold mb-1">Volume Change Percentage</div>
                         <div className={vpchangeClass}>{props.vchangepercent} %</div>
             </div>
-            <div className="col m-2 text-center">
-                  <div className="block-title font-weight-bold">Current Volume</div>
+            <div className="col-md-3 col-sm-12 m-2 text-center borderBottom">
+                  <div className="block-title font-weight-bold mb-1">Current Volume</div>
                         <div className="text-dark text-center font-weight-bold">{props.currentvolume} BTC</div>
             </div>
         </div>

@@ -78,7 +78,15 @@
 .coin{
     font-size: 20px;
 }
+@media only screen and (max-width: 360px){
+.coin-name{
+    text-align: center;
+}
+.borderBottom{
+    border-bottom: 1px solid black;
+}
 
+}
 /*----------------------------UTILS----------------------------------*/
 /*----------------------------UTILS----------------------------------*/
 

@@ -13,7 +13,7 @@ class ContextProvider extends Component {
 setMenu = (val) =>{
     this.setState({menu:val})    
 }
-setCoin = () =>{this.setState({coin: "new coin"})}
+setCoin = (e) =>{this.setState({coin: e})}
     render() { 
         return (  
            

@@ -23,18 +23,23 @@
 
 /*-----------------TopVolumeChangesBox-------------------------*/
 
-
+.box-border{
+     border-top: 1px solid black ;
+     border-bottom: 1px solid black;
+}
 .box-block{
     display: block;
     padding: 8px;
     border: 1px solid slateblue;
     width: auto;
     margin: 5px;
+    z-index: 99;
     
 }
 .block{
   display: contents;
   text-align: center;
+ 
 }
 .block .title{
     display: block;
@@ -69,4 +74,22 @@
     border: transparent;
     border-radius: 40px;
 
+}
+.coin{
+    font-size: 20px;
+}
+
+/*----------------------------UTILS----------------------------------*/
+/*----------------------------UTILS----------------------------------*/
+
+.greenbutton{
+    width: auto;
+    display: block;
+    background-color: rgb(12, 177, 12);
+    color: white;
+    font-weight: bold;
+    padding: 4px;
+    border-radius: 10px ;
+    margin-bottom: 2px;
+    cursor: pointer;
 }

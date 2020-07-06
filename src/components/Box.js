@@ -9,10 +9,11 @@ function Box(props) {
         <div className="box-block">
         <div className="block">
             <div className="title">
-               {props.title}
+               {props.one}
             </div>
-    <div className="price">{props.price}</div>
-    <div className="volume">{props.volume}</div>
+    <div className="price">{props.two}</div>
+    <div className="volume">{props.three}</div>
+    <div className="percenatge">{props.four}</div>
 
         </div>
 

@@ -6,22 +6,21 @@ function TopSuggestions(props) {
     
     useEffect(()=>{
 
-       /* const ws = new WebSocket("wss://stream.binance.com:9443/ws/btcusd@trade");
+        const ws = new WebSocket("wss://stream.binance.com:9443/ws/ethbtc@trade");
         ws.onopen=()=>{
             ws.send((JSON.stringify({
                 "method":"UNSUBSCRIBE",
                 "params": [
                     "ethbtc@trade"
                   ],
-                "id":1
+                "id":13
 
             })))
         }
-           
-        
-             ws.onmessage=(evnt)=>{
-                    console.log(evnt.data)
-             }*/
+           ws.onmessage=(evnt)=>{
+                    console.log(JSON.parse(evnt.data).s )
+
+             }
     },[])
     return (
         <div>

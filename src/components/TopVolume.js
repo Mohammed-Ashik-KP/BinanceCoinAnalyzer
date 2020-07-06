@@ -1,18 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
+import React, { useEffect, useState, useContext } from 'react';
 import '../styles/style.css';
-
-import Box from './Box';
+import { contextData } from '../context/context';
+import coinList from './coinlist';
+import DisplayBox from './displayBox';
 function VolumeAnalyzerTop(props) {
-const [coinpair,setCoinPair] = useState('ETHBTC');
-const [timeframe,setTimeFrame] = useState('4h');
+const {coin,setCoin} = useContext(contextData);
+const [timeframe,setTimeFrame] = useState('2h');
+const [volumeChange,setVolumeChange] = useState();
+const [currentVolume,setCurrentVolume] = useState();
+const [currentPrice,setCurrentPrice] = useState();
+const [priceChange,setPriceChange] = useState();
+const [volumeChangePercentage,setVolumeChangePercenatge] = useState();
+
     useEffect(()=>{
+        if(coin==="" || coin ===" " || coin===null){
+            coinList.forEach((coin,i)=>{
+                const cp= coin.toLowerCase();
+                const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${cp}@kline_${timeframe}`);
+                ws.onopen=()=>{
+                    ws.send((JSON.stringify({
+                        "method":"SUBSCRIBE",
+                        "params": [
+                           `${coin}@kline_${timeframe}`
+                          ],
+                        "id":i
+        
+                    })))
+                }
+          
+               ws.onmessage=(evnt)=>{
+                    console.log(evnt.data)
+                     }
+            })
+        }
+        else{
         var avgWaitPrice=0;
         var totalVolumeBefore=0;
         var currentQuoteVolume=0;
-        const endTime = Date.now()- parseInt(timeframe)*60*60*1000;
+        const endTime = Date.now()-parseInt(timeframe)*60*60*1000;
         const startTime = endTime - 24*60*60*1000;
-        const api = `https://api.binance.com/api/v3/klines?symbol=${coinpair}&interval=${timeframe}&startTime=${startTime}&endTime=${endTime}`;
+        const api = `https://api.binance.com/api/v3/klines?symbol=${coin}&interval=30m&startTime=${startTime}&endTime=${endTime}`;
         fetch(api,{
             type:'cors',
         })
@@ -20,11 +47,12 @@ const [timeframe,setTimeFrame] = useState('4h');
         .then((data)=>  
         {
             for(var i=0;i<data.length;i++){
+                
                  totalVolumeBefore = totalVolumeBefore + ( parseInt(data[i][5]))
             }
                 })
                 .then(()=>{
-                    fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${coinpair}`,
+                    fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${coin}`,
                     {
                         type:'cors',
                     })
@@ -33,17 +61,17 @@ const [timeframe,setTimeFrame] = useState('4h');
                         
                         avgWaitPrice=(data.weightedAvgPrice);
                         currentQuoteVolume=data.quoteVolume;
-                       
+                       setCurrentPrice(data.lastPrice);
+                       setPriceChange(data.priceChangePercent);
                     }).then(()=>{
-                        console.log(totalVolumeBefore*avgWaitPrice);
-                        console.log(currentQuoteVolume-(totalVolumeBefore*avgWaitPrice))
+                        
+                      setVolumeChange((currentQuoteVolume-(totalVolumeBefore*avgWaitPrice)).toFixed(2));
+                      setCurrentVolume(parseInt(currentQuoteVolume).toFixed(2));
+                      setVolumeChangePercenatge(((currentQuoteVolume-(totalVolumeBefore*avgWaitPrice))/(totalVolumeBefore*avgWaitPrice)*100).toFixed(2))
                     })
-                })
-           
-
+                });}
             
-   
-        },[coinpair,timeframe])
+        },[coin,timeframe])
 
     return (
         <div>
@@ -57,30 +85,24 @@ const [timeframe,setTimeFrame] = useState('4h');
                 </div>
                 <div className="row text-center mt-2 mb-2">
                     <div className="col-md-6 col-sm-12">
-                        Enter Coin : <input onChange={e=>{setCoinPair((e.target.value).toUpperCase() + 'BTC')}} type="text"></input>
+                        Enter Coin : <input  onChange={e=>{setCoin((e.target.value).toUpperCase() + 'BTC')}} type="text" ></input>
                     </div>
                     <div className="col-md-6 cl-sm-12">
                         TimeFrame : <select onChange={e=>{setTimeFrame(e.target.value)}}name="timeframe">
-                            <option value="1">1h</option>
-                            <option value="2">2h</option>
-                            <option value="4">4h</option>
-                            <option value="24">1d</option>
+                            <option value="1h">1h</option>
+                            <option value="2h">2h</option>
+                            <option value="4h">4h</option>
+                            
                         </select>
                     </div>
                 </div>
+               
                 <div className="row">
-                    <div className="col">
-                    <Carousel>
-  <Carousel.Item>
-            <Box title1='BTCUSD' amount1="10 BTC" change1="6%"/>
-
-  </Carousel.Item>
-
-  <Carousel.Item>
-  <Box title1='ETHBTC' amount1="65 BTC" change1="32%"/>
-  </Carousel.Item>
+                    <div className="col-12">
+                 
  
-</Carousel>
+            <DisplayBox coin={coin} cprice={currentPrice} pricechange={priceChange} volumechange={volumeChange} vchangepercent={Number(volumeChangePercentage)} currentvolume={currentVolume}/>
+
                     </div>
                 </div>
             </div>

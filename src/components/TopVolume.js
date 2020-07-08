@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import '../styles/style.css';
 import { contextData } from '../context/context';
-import coinList from './coinlist';
+
 import DisplayBox from './displayBox';
+import TopVolumeOverview from './topVolumeOverview';
 function VolumeAnalyzerTop(props) {
 const {coin,setCoin} = useContext(contextData);
 const [timeframe,setTimeFrame] = useState('2h');
@@ -13,27 +14,7 @@ const [priceChange,setPriceChange] = useState();
 const [volumeChangePercentage,setVolumeChangePercenatge] = useState();
 
     useEffect(()=>{
-        if(coin==="" || coin ===" " || coin===null){
-            coinList.forEach((coin,i)=>{
-                const cp= coin.toLowerCase();
-                const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${cp}@kline_${timeframe}`);
-                ws.onopen=()=>{
-                    ws.send((JSON.stringify({
-                        "method":"SUBSCRIBE",
-                        "params": [
-                           `${coin}@kline_${timeframe}`
-                          ],
-                        "id":i
-        
-                    })))
-                }
-          
-               ws.onmessage=(evnt)=>{
-                    console.log(evnt.data)
-                     }
-            })
-        }
-        else{
+       
             try {
         var avgWaitPrice=0;
         var totalVolumeBefore=0;
@@ -75,7 +56,7 @@ const [volumeChangePercentage,setVolumeChangePercenatge] = useState();
              catch (error) {
                 console.log("No Coin Found !")
             }
-        }
+       
         },[coin,timeframe])
 
     return (
@@ -111,6 +92,7 @@ const [volumeChangePercentage,setVolumeChangePercenatge] = useState();
                     </div>
                 </div>
             </div>
+            <TopVolumeOverview/>
         </div>
     );
 }

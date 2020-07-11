@@ -14,7 +14,7 @@ function Box(props) {
             </div>
     <div>Volume Increased : {props.vchange}</div>
     <div>+ {props.vcp} %</div>
-    <div>{props.four}</div>
+    
 
         </div>
 

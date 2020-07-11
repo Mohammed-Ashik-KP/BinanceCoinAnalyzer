@@ -5,24 +5,7 @@ function TopVolumeOverview(props) {
     const [timeframe] = useState('4h');
  const [topdata,setTopData]=useState([]);
     useEffect(()=>{
-        /*coinList.forEach((coin,i)=>{
-            const cp= coin.toLowerCase();
-          const ws = new WebSocket(`wss://stream.bin2ance.com:9443/ws/${cp}@kline_${timeframe}`);
-            ws.onopen=()=>{
-                ws.send((JSON.stringify({
-                    "method":"SUBSCRIBE",
-                    "params": [
-                       `${coin}@kline_${timeframe}`
-                      ],
-                    "id":i
-    
-                })))
-            }
-      
-           ws.onmessage=(evnt)=>{
-                console.log(evnt.data)
-                 }
-        })*/
+        
       getData();
       
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -91,7 +74,7 @@ function TopVolumeOverview(props) {
                         topcoin.forEach((key, i) =>
                          {
                             result.push(
-                                {"c" : key, "vchange" : parseFloat(topVolumeChange[i]) , "vcp":topVolumeChangePercent[i]}
+                                {"c" : key, "vchange" : parseFloat(topVolumeChange[i]) , "vcp":topVolumeChangePercent[i] }
                             )
                         });
                        finalData = result.sort((a,b) =>

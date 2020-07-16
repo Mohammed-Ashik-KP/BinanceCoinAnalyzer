@@ -1,5 +1,8 @@
 import React, { useEffect, useContext, useState } from 'react';
 import { contextData } from '../context/context';
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
+
 
 function PriceActions(props) {
     const {coin,setCoin} = useContext(contextData);
@@ -8,6 +11,15 @@ function PriceActions(props) {
     const [buys,setBuys] = useState();
     const [sells,setSells] = useState();
     const [counts,setCounts] = useState();
+   const [st,setST] = useState();
+   const [et,setET] = useState();
+   const [avgTradesS,setAvgTrades] =useState();
+   const [recentAvgTrades,setRecentAvgTrades] = useState();
+
+
+
+
+   // const question_icon = <FontAwesomeIcon icon={faQuestionCircle} />
     useEffect(()=>{
             
      /*     const ws = new WebSocket(`wss://stream.binance.com:9443/ws/mblbtc@trade`);
@@ -32,6 +44,7 @@ function PriceActions(props) {
                  var count=0;
                  var Ltotalsell=0;
                  var Ltotalbuy=0;
+                 var time=[];
                  fetch(api,
                     {type:'cors'
                     }).then((resp)=>resp.json())
@@ -40,7 +53,7 @@ function PriceActions(props) {
                             if(data[i].quoteQty > .6)
                             {
                                count++;
-                               console.log(data[i])
+                               time.push(data[i].time);
                                if(data[i].isBuyerMaker){
                                     sell++;
                                     Ltotalsell=parseFloat(Ltotalsell+parseFloat(data[i].quoteQty));
@@ -52,14 +65,63 @@ function PriceActions(props) {
 
                             }
                         }
+                        if(count>0)
+                        {
+                        time.sort();
+                        var len = (time.length);
+                        setST((new Date(time[0]).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })));
+                        
+
+                        setET((new Date(time[len-1]).toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })));
+                     
+                     }
                         setCounts(count);
                         setBuys(buy);
                         setSells(sell);
-                        setTotalbuy(Ltotalbuy);
-                        setTotalsell(Ltotalsell);
+                        setTotalbuy((Ltotalbuy).toFixed(3));
+                        setTotalsell((Ltotalsell).toFixed(3));
                         
                         
                     });
+                    //const endTime = Date.now()-parseInt(timeframe)*60*60*1000;
+        const startTime = Date.now() - 24*60*60*1000;
+        const endTime = Date.now() - 30*60*1000;
+       const recentStartTime = Date.now() - 30*60*1000;
+       var recentEndTime = Date.now();
+       var tradeCount=0;
+       var totalTrades=0;
+       var recentTotalTrades=0;
+       var avgTrades=0;
+
+        fetch(`https://api.binance.com/api/v3/klines?symbol=${coin}&interval=15m&startTime=${startTime}&endTime=${endTime}`,{
+            type:'cors',
+        }).then((resp)=>resp.json()
+        .then((data)=>{
+            for(var i=0;i<data.length;i++)
+            {
+            totalTrades=totalTrades+data[i][8];
+            tradeCount++;
+            }
+        })).then(()=>{ 
+            fetch(`https://api.binance.com/api/v3/klines?symbol=${coin}&interval=15m&startTime=${recentStartTime}&endTime=${recentEndTime}`,{
+            type:'cors',
+        }).then((resp)=>resp.json()
+        .then((data)=>{
+            for(var i=0;i<data.length;i++)
+            {
+            recentTotalTrades=recentTotalTrades+data[i][8];
+
+            }
+        })).then(()=>{
+            avgTrades = (Math.ceil(totalTrades/tradeCount));
+            setAvgTrades(avgTrades);
+            setRecentAvgTrades(recentTotalTrades);
+        
+           
+        })
+
+      
+    })
     
     },[coin])
     return (
@@ -74,22 +136,43 @@ function PriceActions(props) {
 
     <div className="row d-flex justify-content-center mt-2 mb-2">
                     <div className="col-md-6 col-sm-12 text-center">
-                       Coin : <input  onChange={e=>{setCoin((e.target.value).toUpperCase() + 'BTC')}} type="text" maxLength="5" ></input>
+                      <input placeholder="Coin Name"  onChange={e=>{setCoin((e.target.value).toUpperCase() + 'BTC')}} type="text" maxLength="5" ></input>
                     </div>
               
                 </div>
-    <div className="row container">
-        <div className="col">
-        <div className="row coin-name"><div className=" col text-info font-weight-bolder m-2 coin">  {coin} </div></div>
-        <div className="row"><div className="col mb-2 font-weight-bold "> Total Trades :<span> {counts} </span></div></div>
-        </div>
-    <div className="col">
-    <div className="row"><div className="col mb-2 font-weight-bold "> {buys} Buys with {totalbuy}</div></div>
-        </div>
-        <div className="col">
-    <div className="row"><div className="col mb-2 font-weight-bold "> {sells} Sells with {totalsell}</div></div>
-        </div>
+               
+
+            <div className="row d-flex justify-content-center align-items-center">
+                <div className="col-md-4 col-sm-12 text-center">
+                       <div className="coin text-danger font-weight-bolder"> {coin}</div>
+                        <div className="row">
+    <div className="col text-dark"> Total <span className="font-weight-bold">{counts}</span> Trades Detected</div>
+                        </div>
+                </div>
+    <div className="col-md-3 col-sm-12 text-center text-dark font-weight-bold m-2">
+         <span className="text-success">{buys} Buys </span> Worth <span className="text-success">{totalbuy}</span> BTC</div>
+    <div className="col-md-3 col-sm-12 text-center text-dark font-weight-bold m-2">
+         <span className="text-danger">{sells} Sells </span> Worth <span className="text-danger">{totalsell} </span> BTC  </div>      
+            </div>
+    <div className="row text-center m-3">
+        <div className="col-12 text-center text-secondary">
+        These Trades Has Been Happened Between <span className="text-dark font-weight-bold">{st} </span>  and  <span className="text-dark font-weight-bold">{et} </span>
     </div>
+    </div>
+        <div className="row  m-2">
+            <div className="col text-center d-flex justify-content-around">
+                <div className="trade-box">
+                <div className="text-info font-weight-bold">Avg Trades / 15 Min</div>
+            <div className="text-dark font-weight-bolder">{avgTradesS}</div>
+            </div>
+            </div>
+            <div className="col text-center d-flex justify-content-around">
+            <div className="trade-box align-items-center">
+                <div className="text-info font-weight-bold">Last 15 Min Trades</div>
+            <div className="text-dark font-weight-bolder">{recentAvgTrades}</div>
+            </div>
+          </div>
+        </div>
         </div>
     );
 }

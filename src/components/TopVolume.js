@@ -6,7 +6,7 @@ import DisplayBox from './displayBox';
 import TopVolumeOverview from './topVolumeOverview';
 function VolumeAnalyzerTop(props) {
 const {coin,setCoin} = useContext(contextData);
-const [timeframe,setTimeFrame] = useState('2h');
+const [timeframe,setTimeFrame] = useState('1h');
 const [volumeChange,setVolumeChange] = useState();
 const [currentVolume,setCurrentVolume] = useState();
 const [currentPrice,setCurrentPrice] = useState();
@@ -71,7 +71,7 @@ const [volumeChangePercentage,setVolumeChangePercenatge] = useState();
                 </div>
                 <div className="row text-center mt-2 mb-2">
                     <div className="col-md-6 col-sm-12">
-                        Enter Coin : <input  onChange={e=>{setCoin((e.target.value).toUpperCase() + 'BTC')}} type="text" maxLength="5" ></input>
+                        <input placeholder="Coin Name | Eg : ETH" onChange={e=>{setCoin((e.target.value).toUpperCase() + 'BTC')}} type="text" maxLength="5" ></input>
                     </div>
                     <div className="col-md-6 cl-sm-12">
                         TimeFrame : <select onChange={e=>{setTimeFrame(e.target.value)}}name="timeframe">

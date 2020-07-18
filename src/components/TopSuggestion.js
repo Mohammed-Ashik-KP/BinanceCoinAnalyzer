@@ -1,26 +1,29 @@
 import React, { useEffect } from 'react';
 import Box from './Box';
+import coinList from './coinlist';
 
 
 function TopSuggestions(props) {
     
     useEffect(()=>{
 
-        const ws = new WebSocket("wss://stream.binance.com:9443/ws/ethbtc@trade");
+      coinList.forEach((coin,index)=>{
+          coin = coin.toLowerCase();
+        const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${coin}@trade`);
         ws.onopen=()=>{
             ws.send((JSON.stringify({
-                "method":"UNSUBSCRIBE",
+                "method":"SUBSCRIBE",
                 "params": [
-                    "ethbtc@trade"
+                    `${coin}@trade`
                   ],
-                "id":13
+                "id":index
 
             })))
         }
            ws.onmessage=(evnt)=>{
-                    console.log(JSON.parse(evnt.data).s )
-
+                    console.log((JSON.parse(evnt.data).s),(JSON.parse(evnt.data).p))
              }
+      })  
     },[])
     return (
         <div>

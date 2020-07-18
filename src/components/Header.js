@@ -5,7 +5,7 @@ function Header(props) {
        <> <div>
             <div className="navigation">
                 <div className="nav-links">
-                    <div className="brand">Bi Bot V1</div>
+                    <div className="brand">Binance Coin Analyzer V.1</div>
                 </div>
             </div>
         </div>

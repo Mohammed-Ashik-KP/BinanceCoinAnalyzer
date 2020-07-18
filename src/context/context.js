@@ -6,7 +6,7 @@ class ContextProvider extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-        menu:'topsuggestion',
+        menu:'volumeanalyzer',
         coin:'ETHBTC' }
     }
 

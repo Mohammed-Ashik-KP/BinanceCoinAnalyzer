@@ -87,7 +87,7 @@ function PriceActions(props) {
         const startTime = Date.now() - 24*60*60*1000;
         const endTime = Date.now() - 30*60*1000;
        const recentStartTime = Date.now() - 30*60*1000;
-       var recentEndTime = Date.now();
+       const recentEndTime = Date.now() - 15*60*1000;
        var tradeCount=0;
        var totalTrades=0;
        var recentTotalTrades=0;
@@ -103,7 +103,7 @@ function PriceActions(props) {
             tradeCount++;
             }
         })).then(()=>{ 
-            fetch(`https://api.binance.com/api/v3/klines?symbol=${coin}&interval=15m&startTime=${recentStartTime}&endTime=${recentEndTime}`,{
+            fetch(`https://api.binance.com/api/v3/klines?symbol=${coin}&interval=5m&startTime=${recentStartTime}&endTime=${recentEndTime}`,{
             type:'cors',
         }).then((resp)=>resp.json()
         .then((data)=>{
@@ -159,7 +159,7 @@ function PriceActions(props) {
         These Trades Has Been Happened Between <span className="text-dark font-weight-bold">{st} </span>  and  <span className="text-dark font-weight-bold">{et} </span>
     </div>
     </div>
-        <div className="row  m-2">
+        <div className="row d-flex justify-content-around m-3">
             <div className="col text-center d-flex justify-content-around">
                 <div className="trade-box">
                 <div className="text-info font-weight-bold">Avg Trades / 15 Min</div>

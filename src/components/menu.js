@@ -6,10 +6,7 @@ function Menu(props) {
 
     return (
         <div>
-            <Nav fill variant="tabs" defaultActiveKey="/home">
-  <Nav.Item variant="danger" >
-    <Nav.Link  style={{"color":"#f20c1b","fontWeight":"bold"}} onClick={ (e)=>{setMenu("topsuggestion")}}>Top Suggestions</Nav.Link>
-  </Nav.Item>
+            <Nav fill variant="tabs" defaultActiveKey="/">
   <Nav.Item>
     <Nav.Link eventKey="link-1" style={{"color":"#f20c1b","fontWeight":"bold"}}  onClick={ (e)=>{setMenu("volumeanalyzer")}}>Volume Analyzer</Nav.Link>
   </Nav.Item>

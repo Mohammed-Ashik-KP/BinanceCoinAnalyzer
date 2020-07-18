@@ -14,7 +14,7 @@ function Footer(props) {
                 <div className="col text-white text-center font-weight-bolder ">
     <a className="mr-2 text-white" href="https://github.com/Aashiq-Otp"> {githubicon} </a>  
     <a className="ml-1 mr-2 text-white" href="mailto:Aashiqotp.as@gmail.com">{emailicon}</a>
-    <a className="ml-2 text-white" href="t.me/AashiqOtp">{TelegramIcon}</a> <br/>
+    <a className="ml-2 text-white" href="https://t.me/AashiqOtp">{TelegramIcon}</a> <br/>
                             &copy; Binance Coin Analyzer V.1 <br/>
                             2020
 

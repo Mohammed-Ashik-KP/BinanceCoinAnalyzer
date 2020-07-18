@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/BinanceCoinAnalyzer/static/css/main.2f29bb6b.chunk.css",
-    "main.js": "/BinanceCoinAnalyzer/static/js/main.badb630a.chunk.js",
-    "main.js.map": "/BinanceCoinAnalyzer/static/js/main.badb630a.chunk.js.map",
+    "main.js": "/BinanceCoinAnalyzer/static/js/main.3c763dfa.chunk.js",
+    "main.js.map": "/BinanceCoinAnalyzer/static/js/main.3c763dfa.chunk.js.map",
     "runtime-main.js": "/BinanceCoinAnalyzer/static/js/runtime-main.157b4e77.js",
     "runtime-main.js.map": "/BinanceCoinAnalyzer/static/js/runtime-main.157b4e77.js.map",
     "static/css/2.af3c1da9.chunk.css": "/BinanceCoinAnalyzer/static/css/2.af3c1da9.chunk.css",
-    "static/js/2.0e62dd32.chunk.js": "/BinanceCoinAnalyzer/static/js/2.0e62dd32.chunk.js",
-    "static/js/2.0e62dd32.chunk.js.map": "/BinanceCoinAnalyzer/static/js/2.0e62dd32.chunk.js.map",
+    "static/js/2.6fb3ebb0.chunk.js": "/BinanceCoinAnalyzer/static/js/2.6fb3ebb0.chunk.js",
+    "static/js/2.6fb3ebb0.chunk.js.map": "/BinanceCoinAnalyzer/static/js/2.6fb3ebb0.chunk.js.map",
     "index.html": "/BinanceCoinAnalyzer/index.html",
-    "precache-manifest.28487390a01ebc84ebaaf878ca24dbac.js": "/BinanceCoinAnalyzer/precache-manifest.28487390a01ebc84ebaaf878ca24dbac.js",
+    "precache-manifest.6fd83694542a16782879418891edcad3.js": "/BinanceCoinAnalyzer/precache-manifest.6fd83694542a16782879418891edcad3.js",
     "service-worker.js": "/BinanceCoinAnalyzer/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/BinanceCoinAnalyzer/static/css/2.af3c1da9.chunk.css.map",
     "static/css/main.2f29bb6b.chunk.css.map": "/BinanceCoinAnalyzer/static/css/main.2f29bb6b.chunk.css.map",
-    "static/js/2.0e62dd32.chunk.js.LICENSE.txt": "/BinanceCoinAnalyzer/static/js/2.0e62dd32.chunk.js.LICENSE.txt"
+    "static/js/2.6fb3ebb0.chunk.js.LICENSE.txt": "/BinanceCoinAnalyzer/static/js/2.6fb3ebb0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.157b4e77.js",
     "static/css/2.af3c1da9.chunk.css",
-    "static/js/2.0e62dd32.chunk.js",
+    "static/js/2.6fb3ebb0.chunk.js",
     "static/css/main.2f29bb6b.chunk.css",
-    "static/js/main.badb630a.chunk.js"
+    "static/js/main.3c763dfa.chunk.js"
   ]
 }

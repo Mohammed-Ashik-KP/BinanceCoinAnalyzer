@@ -50,7 +50,7 @@ function PriceActions(props) {
                     }).then((resp)=>resp.json())
                     .then((data)=> {
                         for(var i=0; i< data.length ; i++){
-                            if(data[i].quoteQty > .6)
+                            if(data[i].quoteQty > .5)
                             {
                                count++;
                                time.push(data[i].time);

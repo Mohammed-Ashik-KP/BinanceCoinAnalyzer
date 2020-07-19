@@ -78,7 +78,7 @@ function TopVolumeOverview(props) {
                             )
                         });
                        finalData = result.sort((a,b) =>
-                        (a.vchange < b.vchange) ? 1 : ((b.vchange < a.vchange) ? -1 : 0)).slice(0,10);
+                        (a.vchange < b.vchange) ? 1 : ((b.vchange < a.vchange) ? -1 : 0)).slice(0,12);
                         
                     }).then(()=>{
                         setTopData(finalData);

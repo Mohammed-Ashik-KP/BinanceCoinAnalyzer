@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/BinanceCoinAnalyzer/static/css/main.2f29bb6b.chunk.css",
-    "main.js": "/BinanceCoinAnalyzer/static/js/main.63381586.chunk.js",
-    "main.js.map": "/BinanceCoinAnalyzer/static/js/main.63381586.chunk.js.map",
+    "main.js": "/BinanceCoinAnalyzer/static/js/main.234c9288.chunk.js",
+    "main.js.map": "/BinanceCoinAnalyzer/static/js/main.234c9288.chunk.js.map",
     "runtime-main.js": "/BinanceCoinAnalyzer/static/js/runtime-main.157b4e77.js",
     "runtime-main.js.map": "/BinanceCoinAnalyzer/static/js/runtime-main.157b4e77.js.map",
     "static/css/2.af3c1da9.chunk.css": "/BinanceCoinAnalyzer/static/css/2.af3c1da9.chunk.css",
     "static/js/2.6fb3ebb0.chunk.js": "/BinanceCoinAnalyzer/static/js/2.6fb3ebb0.chunk.js",
     "static/js/2.6fb3ebb0.chunk.js.map": "/BinanceCoinAnalyzer/static/js/2.6fb3ebb0.chunk.js.map",
     "index.html": "/BinanceCoinAnalyzer/index.html",
-    "precache-manifest.d7b878464c21f75a84bae23724cd4e23.js": "/BinanceCoinAnalyzer/precache-manifest.d7b878464c21f75a84bae23724cd4e23.js",
+    "precache-manifest.645cd50b2b9a2611605951be85d32fef.js": "/BinanceCoinAnalyzer/precache-manifest.645cd50b2b9a2611605951be85d32fef.js",
     "service-worker.js": "/BinanceCoinAnalyzer/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/BinanceCoinAnalyzer/static/css/2.af3c1da9.chunk.css.map",
     "static/css/main.2f29bb6b.chunk.css.map": "/BinanceCoinAnalyzer/static/css/main.2f29bb6b.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.af3c1da9.chunk.css",
     "static/js/2.6fb3ebb0.chunk.js",
     "static/css/main.2f29bb6b.chunk.css",
-    "static/js/main.63381586.chunk.js"
+    "static/js/main.234c9288.chunk.js"
   ]
 }

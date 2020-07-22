@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1d1d4fb0713e2da2963587b3b3632deb",
+    "revision": "69b32c0011c8b015f30149645f0c515b",
     "url": "/BinanceCoinAnalyzer/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/BinanceCoinAnalyzer/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "7d494ced0a3bba1c3796",
+    "revision": "d69811f49ae8a7635c55",
     "url": "/BinanceCoinAnalyzer/static/css/main.2f29bb6b.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/BinanceCoinAnalyzer/static/js/2.6fb3ebb0.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "7d494ced0a3bba1c3796",
-    "url": "/BinanceCoinAnalyzer/static/js/main.234c9288.chunk.js"
+    "revision": "d69811f49ae8a7635c55",
+    "url": "/BinanceCoinAnalyzer/static/js/main.35ad4728.chunk.js"
   },
   {
     "revision": "82c2493f46596f086feb",

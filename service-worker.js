@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/BinanceCoinAnalyzer/precache-manifest.645cd50b2b9a2611605951be85d32fef.js"
+  "/BinanceCoinAnalyzer/precache-manifest.7528a9adfe7b22a646d1c3dac186e17a.js"
 );
 
 self.addEventListener('message', (event) => {

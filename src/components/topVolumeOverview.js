@@ -2,20 +2,25 @@ import React, { useEffect, useState } from 'react';
 import coinList from './coinlist'
 import Singlebox from './Singlebox';
 function TopVolumeOverview(props) {
-    const [timeframe] = useState('4h');
+    const [timeframe,setTimeframe] = useState('30m');
  const [topdata,setTopData]=useState([]);
     useEffect(()=>{
         
       getData();
-      
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[timeframe])
    let finalData =[];
     const getData= ()=>{
-        
+        let endTime,startTime=0;
+       if(timeframe==='15m' || timeframe==='30m'){
+         endTime = Date.now()-parseInt(timeframe)*60*1000;
+            startTime = endTime - 24*60*60*1000 ;
+       } 
+       else{
+            endTime = Date.now()-parseInt(timeframe)*60*60*1000;
+            startTime = endTime - 24*60*60*1000;
+       }
        
-        const endTime = Date.now()-parseInt(timeframe)*60*60*1000;
-        const startTime = endTime - 24*60*60*1000;
         var topcoin=[];
         var topVolumeChange=[];
        var topVolumeChangePercent=[];
@@ -29,7 +34,7 @@ function TopVolumeOverview(props) {
         var vchangep=0;
  
 
-        fetch(`https://api.binance.com/api/v3/klines?symbol=${coin}&interval=30m&startTime=${startTime}&endTime=${endTime}`,{
+        fetch(`https://api.binance.com/api/v3/klines?symbol=${coin}&interval=5m&startTime=${startTime}&endTime=${endTime}`,{
             type:'cors',
         })
         .then((resp)=>resp.json())
@@ -96,8 +101,19 @@ function TopVolumeOverview(props) {
         <div className="row">
         <div className="col m-2 d-flex justify-content-center">
             <div className="section-title">
-              Top 10 Volume Changes
+              Top  Volume Changes
             </div>
+        </div>
+    </div>
+    <div className="row text-center">
+        <div className="col d-flex justify-content-center ">
+            In  <select className="ml-2" onChange={e=>{setTimeframe(e.target.value)}}name="timeframe">
+                            <option value="15m">15 Min</option>
+                            <option value="30m" selected>30 Min</option>
+                            <option value="1h">1h</option>
+                            <option value="2h">2h</option>
+                            <option value="4h">4h</option>
+                        </select>
         </div>
     </div>
         <div className="row">
